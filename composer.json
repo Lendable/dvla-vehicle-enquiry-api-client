@@ -1,0 +1,26 @@
+{
+    "name": "lendable/dvla-vehicle-enquiry-api-client",
+    "description": "API client for the DVLA's Vehicle Enquiry Service API",
+    "keywords": ["DVLA", "DVLA Vehicle Enquiry Service"],
+    "homepage": "https://www.lendable.co.uk",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Lendable Ltd",
+            "email": "dev@lendable.co.uk",
+            "homepage": "https://www.lendable.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lendable\\Dvla\\VehicleEnquiry\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lendable\\Dvla\\VehicleEnquiry\\Tests\\": "tests/"
+        }
+    },
+    "require": {}
+}

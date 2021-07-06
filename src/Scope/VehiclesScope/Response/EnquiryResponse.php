@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response;
 
+use Assert\Assert;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\Date;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\MotStatus;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
@@ -61,6 +62,9 @@ class EnquiryResponse
      */
     public static function fromArray(array $data): self
     {
+        Assert::that($data)
+            ->keyExists('registrationNumber');
+
         $instance = new self();
         $instance->registrationNumber = RegistrationNumber::fromString($data['registrationNumber']);
         $instance->taxStatus = isset($data['taxStatus']) ? TaxStatus::fromString($data['taxStatus']) : null;

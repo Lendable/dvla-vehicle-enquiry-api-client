@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Lendable\Dvla\VehicleEnquiry\Scope;
 
 use Lendable\Dvla\VehicleEnquiry\Client\HttpClient;
-use Lendable\Dvla\VehicleEnquiry\Client\Response;
 use Lendable\Dvla\VehicleEnquiry\Client\PayloadRequest;
 use Lendable\Dvla\VehicleEnquiry\Client\Request;
+use Lendable\Dvla\VehicleEnquiry\Client\Response;
 use Psr\Http\Message\UriInterface;
 
 abstract class Scope

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lendable\Dvla\VehicleEnquiry;
+namespace Lendable\Dvla\VehicleEnquiry\Client;
 
 interface PayloadRequest extends Request
 {

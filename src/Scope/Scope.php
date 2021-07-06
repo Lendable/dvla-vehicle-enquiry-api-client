@@ -6,8 +6,8 @@ namespace Lendable\Dvla\VehicleEnquiry\Scope;
 
 use Lendable\Dvla\VehicleEnquiry\Client\HttpClient;
 use Lendable\Dvla\VehicleEnquiry\Client\Response;
-use Lendable\Dvla\VehicleEnquiry\PayloadRequest;
-use Lendable\Dvla\VehicleEnquiry\Request;
+use Lendable\Dvla\VehicleEnquiry\Client\PayloadRequest;
+use Lendable\Dvla\VehicleEnquiry\Client\Request;
 use Psr\Http\Message\UriInterface;
 
 abstract class Scope

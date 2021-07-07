@@ -1,2 +1,15 @@
-/.idea/
-/vendor/
+# Composer
+/vendor
+
+# Scripts / executables
+/bin
+!/bin/deptrac
+!/bin/local-php-security-checker
+
+# Dev tooling
+.cache
+.php_cs.cache
+.phpunit.result.cache
+/.deptrac.cache
+/.idea
+/config_test.json

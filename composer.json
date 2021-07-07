@@ -19,8 +19,93 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Lendable\\Dvla\\VehicleEnquiry\\Tests\\": "tests/"
+            "Tests\\Unit\\Lendable\\Dvla\\VehicleEnquiry\\": "tests/Unit/",
+            "Tests\\Functional\\Lendable\\Dvla\\VehicleEnquiry\\": "tests/Functional/",
+            "Tests\\Integration\\Lendable\\Dvla\\VehicleEnquiry\\": "tests/Integration/"
         }
     },
-    "require": {}
+    "require": {
+        "php": ">=7.4.0",
+        "ext-json": "*",
+        "beberlei/assert": "^3.2",
+        "nyholm/psr7": "^1.2",
+        "paragonie/hidden-string": "^1.0",
+        "psr/http-client": "^1.0.1",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "guzzlehttp/guzzle": "^6.0|^7.0",
+        "php-parallel-lint/php-parallel-lint": "^1.2",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-beberlei-assert": "^0.12",
+        "phpstan/phpstan-deprecation-rules": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpstan/phpstan-strict-rules": "^0.12",
+        "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.11.20",
+        "slam/phpstan-extensions": "^5.0"
+    },
+
+    "scripts": {
+        "code-style:check": [
+            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v --using-cache=no"
+        ],
+        "code-style:fix": [
+            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --no-interaction --diff -v"
+        ],
+        "security:check": [
+            "bin/local-php-security-checker"
+        ],
+        "static-analysis": [
+            "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi"
+        ],
+        "lint:source": [
+            "parallel-lint src"
+        ],
+        "lint:tests": [
+            "parallel-lint tests"
+        ],
+        "lint:all": [
+            "@lint:source",
+            "@lint:tests"
+        ],
+        "test:all": [
+            "@test:unit",
+            "@test:functional",
+            "@test:integration"
+        ],
+        "test:unit": [
+            "bin/phpunit --colors --do-not-cache-result --testsuite=unit"
+        ],
+        "test:functional": [
+            "bin/phpunit --colors --do-not-cache-result --testsuite=functional"
+        ],
+        "test:integration": [
+            "bin/phpunit --colors --do-not-cache-result --testsuite=integration"
+        ],
+        "rector:check": [
+            "rector --dry-run --ansi --no-progress-bar"
+        ],
+        "rector:fix": [
+            "rector --ansi --no-progress-bar"
+        ],
+        "ci": [
+            "@lint:all",
+            "@code-style:check",
+            "@security:check",
+            "@static-analysis",
+            "@rector:check",
+            "@test:all"
+        ],
+        "run-ci": [
+            "ci/run.sh"
+        ]
+    },
+
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    },
+    "prefer-stable": true
 }

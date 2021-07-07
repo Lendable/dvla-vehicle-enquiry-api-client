@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1.0.0-experimental
+FROM lendableuk/php-fpm-alpine:7.4.9-alpine3.11 as base
+
+COPY --from=composer:2.0.14 /usr/bin/composer /usr/bin/composer
+
+RUN apk add --no-cache git openssh \
+    && mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+COPY ci/php_conf.ini /usr/local/etc/php/conf.d/999-custom.ini
+
+WORKDIR /app
+
+FROM base as ci
+
+COPY . /app
+
+RUN --mount=type=ssh composer install --prefer-dist --no-progress -n --ansi \
+    && apk del openssh git \
+    && composer clear-cache --ansi -n

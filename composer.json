@@ -56,7 +56,15 @@
             "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi"
         ],
         "run-tests": [
+            "@run-unit-tests",
+            "@run-functional-tests",
+            "@run-integration-tests"
+        ],
+        "run-unit-tests": [
             "bin/phpunit tests/Unit/"
+        ],
+        "run-functional-tests": [
+            "bin/phpunit tests/Functional/"
         ],
         "run-integration-tests": [
             "bin/phpunit tests/Integration/"

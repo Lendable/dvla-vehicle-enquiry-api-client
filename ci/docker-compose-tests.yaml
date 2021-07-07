@@ -1,0 +1,10 @@
+version: '2.4'
+
+services:
+    runner:
+        build:
+            context: ..
+            target: ci
+            dockerfile: Dockerfile.php-cli
+        user: "1000:1000"
+        entrypoint: "dockerize composer ci"

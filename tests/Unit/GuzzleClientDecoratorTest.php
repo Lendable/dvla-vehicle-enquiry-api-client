@@ -2,137 +2,112 @@
 
 declare(strict_types=1);
 
-namespace Tests\Functional\Lendable\Dvla\VehicleEnquiry;
+namespace Tests\Unit\Lendable\Dvla\VehicleEnquiry;
 
-use Assert\InvalidArgumentException;
-use GuzzleHttp\Client as GuzzleHttpClient;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use GuzzleHttp\Psr7\Uri;
-use Lendable\Dvla\VehicleEnquiry\Auth\ApiKeyAuthHttpClientDecorator;
-use Lendable\Dvla\VehicleEnquiry\Auth\ValueObject\ApiKey;
-use Lendable\Dvla\VehicleEnquiry\Client;
+use GuzzleHttp\RequestOptions;
+use Lendable\Dvla\VehicleEnquiry\Client\Content;
+use Lendable\Dvla\VehicleEnquiry\Client\HttpMethod;
+use Lendable\Dvla\VehicleEnquiry\Client\Response;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestFailed;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithError;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithMessage;
 use Lendable\Dvla\VehicleEnquiry\GuzzleClientDecorator;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response\EnquiryResponse;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\Date;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\MotStatus;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\TaxStatus;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\YearAndMonth;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\UriInterface;
 
-class ClientTest extends TestCase
+class GuzzleClientDecoratorTest extends TestCase
 {
-    private const BASE_URL = 'https://127.0.0.1/aaa/bbb/ccc';
-
-    private const AUTH_TOKEN = 'ASD-123-456';
-
     /**
-     * @var GuzzleHttpClient&MockObject
+     * @var ClientInterface&MockObject
      */
-    private GuzzleHttpClient $httpClient;
+    private ClientInterface $httpClient;
 
-    private Client $fixture;
+    private GuzzleClientDecorator $fixture;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->httpClient = $this->createMock(GuzzleHttpClient::class);
+        $this->httpClient = $this->createMock(ClientInterface::class);
 
-        $this->fixture = new Client(
-            new ApiKeyAuthHttpClientDecorator(
-                new GuzzleClientDecorator(
-                    $this->httpClient
-                ),
-                ApiKey::fromString(self::AUTH_TOKEN)
-            ),
-            new Uri(self::BASE_URL)
+        $this->fixture = new GuzzleClientDecorator(
+            $this->httpClient
         );
     }
 
     /**
      * @test
      */
-    public function it_should_request_vehicle_details_with_the_given_registration_number_and_decode_response(): void
+    public function it_should_make_http_call_via_the_guzzle_client(): void
     {
-        $registrationNumber = 'BV65CXG';
-        $request = EnquiryRequest::with(RegistrationNumber::fromString($registrationNumber));
-
+        $uri = new Uri('https://127.0.0.1:1234/aa/bb/cc?dd=ee&ff=11');
         $this->httpClient->expects($this->once())
             ->method('request')
             ->with(
                 'POST',
-                new Uri(self::BASE_URL . '/vehicles'),
+                $uri,
                 [
-                    'json' => [
-                        'registrationNumber' => $registrationNumber,
+                    RequestOptions::HEADERS => [
+                        'x-special' => 'data-in-the-header',
                     ],
-                    'headers' => [
-                        'x-api-key' => self::AUTH_TOKEN,
+                    RequestOptions::JSON => [
+                        'foo' => 1,
+                        'baz' => true,
                     ],
                 ]
             )
             ->willReturn(
-                new Response(
+                new GuzzleResponse(
                     200,
-                    [],
-                    <<<JSON_PAYLOAD
-                        {
-                            "registrationNumber": "BV65CXG",
-                            "co2Emissions": 172,
-                            "engineCapacity": 2198,
-                            "markedForExport": false,
-                            "fuelType": "DIESEL",
-                            "motStatus": "Valid",
-                            "revenueWeight": 3000,
-                            "colour": "BLUE",
-                            "make": "FORD",
-                            "typeApproval": "M1",
-                            "yearOfManufacture": 2015,
-                            "taxDueDate": "2021-05-30",
-                            "taxStatus": "Untaxed",
-                            "dateOfLastV5CIssued": "2021-05-13",
-                            "motExpiryDate": "2022-06-30",
-                            "wheelplan": "2 AXLE RIGID BODY",
-                            "monthOfFirstRegistration": "2015-09"
-                        }
-                        JSON_PAYLOAD
+                    [
+                        'Response-Test-Header1' => 'asd-1234-XYZ',
+                        'Response-Test-Header2' => [
+                            '2.1',
+                            '2.2',
+                        ],
+                    ],
+                    '{"test":1}'
                 )
             );
 
-        $response = $this->fixture->vehicles()->enquireDetails($request);
+        $response = $this->fixture->request(
+            $uri,
+            HttpMethod::post(),
+            [
+                'foo' => 1,
+                'baz' => true,
+            ],
+            [
+                'x-special' => 'data-in-the-header',
+            ]
+        );
 
-        $this->assertInstanceOf(EnquiryResponse::class, $response);
-        $this->assertSame($registrationNumber, $response->getRegistrationNumber()->toString());
-        $this->assertSame(172, $response->getCo2Emissions());
-        $this->assertSame(2198, $response->getEngineCapacity());
-        $this->assertFalse($response->getMarkedForExport());
-        $this->assertSame('DIESEL', $response->getFuelType());
-        $this->assertSame(MotStatus::fromString(MotStatus::VALID), $response->getMotStatus());
-        $this->assertSame(3000, $response->getRevenueWeight());
-        $this->assertSame('BLUE', $response->getColour());
-        $this->assertSame('FORD', $response->getMake());
-        $this->assertSame('M1', $response->getTypeApproval());
-        $this->assertSame(2015, $response->getYearOfManufacture());
-        $this->assertEquals(Date::fromString('2021-05-30'), $response->getTaxDueDate());
-        $this->assertSame(TaxStatus::fromString(TaxStatus::UNTAXED), $response->getTaxStatus());
-        $this->assertEquals(Date::fromString('2021-05-13'), $response->getDateOfLastV5CIssued());
-        $this->assertEquals(Date::fromString('2022-06-30'), $response->getMotExpiryDate());
-        $this->assertSame('2 AXLE RIGID BODY', $response->getWheelplan());
-        $this->assertEquals(YearAndMonth::fromString('2015-09'), $response->getMonthOfFirstRegistration());
-        $this->assertNull($response->getMonthOfFirstDvlaRegistration());
-        $this->assertNull($response->getRealDrivingEmissions());
-        $this->assertNull($response->getEuroStatus());
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(200, $response->statusCode());
+        $this->assertInstanceOf(Content::class, $response->content());
+        $this->assertSame('{"test":1}', $response->content()->toString());
+        $this->assertSame(['test' => 1], $response->content()->decode());
+        $this->assertSame(
+            [
+                'Response-Test-Header1' => [
+                    'asd-1234-XYZ',
+                ],
+                'Response-Test-Header2' => [
+                    '2.1',
+                    '2.2',
+                ],
+            ],
+            $response->headers()
+        );
     }
 
     /**
@@ -150,17 +125,19 @@ class ClientTest extends TestCase
         $httpClientException = new ClientException(
             'Test exception message',
             $this->createMock(Request::class),
-            new Response($statusCode, [], $responseBody),
+            new GuzzleResponse($statusCode, [], $responseBody),
         );
         $this->httpClient->expects($this->once())
             ->method('request')
             ->willThrowException($httpClientException);
-        $request = EnquiryRequest::with(RegistrationNumber::fromString('ER19NFD'));
 
         $this->expectException($expectedExceptionClass);
         $this->expectExceptionMessage($expectedExceptionMessage);
 
-        $this->fixture->vehicles()->enquireDetails($request);
+        $this->fixture->request(
+            $this->createMock(UriInterface::class),
+            HttpMethod::post()
+        );
     }
 
     public function providesErrorResponses(): iterable
@@ -170,15 +147,15 @@ class ClientTest extends TestCase
             'expectedExceptionMessage' => 'Request rejected by DVLA Vehicle Enquiry with status 404, code 404, title "Vehicle Not Found" and message "Record for vehicle not found".',
             'statusCode' => 404,
             'responseBody' => '{
-                    "errors": [
-                        {
-                            "status": "404",
-                            "code": "404",
-                            "title": "Vehicle Not Found",
-                            "detail": "Record for vehicle not found"
-                        }
-                    ]
-                }',
+                "errors": [
+                    {
+                        "status": "404",
+                        "code": "404",
+                        "title": "Vehicle Not Found",
+                        "detail": "Record for vehicle not found"
+                    }
+                ]
+            }',
         ];
 
         yield 'Bad Request error' => [
@@ -186,15 +163,15 @@ class ClientTest extends TestCase
             'expectedExceptionMessage' => 'Request rejected by DVLA Vehicle Enquiry with status 400, code ENQ103, title "Bad Request" and message "Invalid format for field - vehicle registration number".',
             'statusCode' => 400,
             'responseBody' => '{
-                    "errors": [
-                        {
-                            "status": "400",
-                            "code": "ENQ103",
-                            "title": "Bad Request",
-                            "detail": "Invalid format for field - vehicle registration number"
-                        }
-                    ]
-                }',
+                "errors": [
+                    {
+                      "status": "400",
+                      "code": "ENQ103",
+                      "title": "Bad Request",
+                      "detail": "Invalid format for field - vehicle registration number"
+                    }
+                ]
+            }',
         ];
 
         yield 'Too Many Requests message' => [
@@ -237,12 +214,14 @@ class ClientTest extends TestCase
         $this->httpClient->expects($this->once())
             ->method('request')
             ->willThrowException($httpClientException);
-        $request = EnquiryRequest::with(RegistrationNumber::fromString('ER19NFD'));
 
         $this->expectException($expectedExceptionClass);
         $this->expectExceptionMessage($expectedExceptionMessage);
 
-        $this->fixture->vehicles()->enquireDetails($request);
+        $this->fixture->request(
+            $this->createMock(UriInterface::class),
+            HttpMethod::post()
+        );
     }
 
     public function providesApiInternalErrors(): iterable
@@ -253,7 +232,7 @@ class ClientTest extends TestCase
             'httpClientException' => new ServerException(
                 'Test exception message',
                 $this->createMock(Request::class),
-                new Response(
+                new GuzzleResponse(
                     500,
                     [],
                     '{
@@ -276,7 +255,7 @@ class ClientTest extends TestCase
             'httpClientException' => new ServerException(
                 'Test exception message',
                 $this->createMock(Request::class),
-                new Response(
+                new GuzzleResponse(
                     503,
                     [],
                     '[
@@ -296,7 +275,7 @@ class ClientTest extends TestCase
             'httpClientException' => new ServerException(
                 'Test exception message',
                 $this->createMock(Request::class),
-                new Response(
+                new GuzzleResponse(
                     567,
                     [],
                     '{"test":1}'
@@ -312,29 +291,5 @@ class ClientTest extends TestCase
                 $this->createMock(Request::class)
             ),
         ];
-    }
-
-    /**
-     * @test
-     * @dataProvider providesErrorResponses
-     */
-    public function it_should_throw_exception_on_unsupported_response(): void
-    {
-        $responseBody =
-            '{
-              "unsupported":"Test"
-            }';
-
-        $this->httpClient->expects($this->once())
-            ->method('request')
-            ->willReturn(
-                new Response(200, [], $responseBody)
-            );
-        $request = EnquiryRequest::with(RegistrationNumber::fromString('ER19NFD'));
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Array does not contain an element with key "registrationNumber"');
-
-        $this->fixture->vehicles()->enquireDetails($request);
     }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request;
 
-use Lendable\Dvla\VehicleEnquiry\Client\HttpMethod;
 use Lendable\Dvla\VehicleEnquiry\Client\PayloadRequest;
+use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\HttpMethod;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
 
 class EnquiryRequest implements PayloadRequest

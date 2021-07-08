@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lendable\Dvla\VehicleEnquiry\Client;
 
 use Assert\Assert;
+use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\Content;
 
 class Response
 {

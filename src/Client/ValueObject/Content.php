@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Lendable\Dvla\VehicleEnquiry\Client;
+namespace Lendable\Dvla\VehicleEnquiry\Client\ValueObject;
+
+use Lendable\Dvla\VehicleEnquiry\Client\DecodingFailure;
 
 class Content
 {

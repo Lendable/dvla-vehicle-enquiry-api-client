@@ -6,8 +6,8 @@ namespace Lendable\Dvla\VehicleEnquiry\Auth;
 
 use Lendable\Dvla\VehicleEnquiry\Auth\ValueObject\ApiKey;
 use Lendable\Dvla\VehicleEnquiry\Client\HttpClient;
-use Lendable\Dvla\VehicleEnquiry\Client\HttpMethod;
 use Lendable\Dvla\VehicleEnquiry\Client\Response;
+use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\HttpMethod;
 use Psr\Http\Message\UriInterface;
 
 class ApiKeyAuthHttpClientDecorator implements HttpClient

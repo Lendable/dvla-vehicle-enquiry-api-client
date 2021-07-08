@@ -41,7 +41,7 @@
 
     "scripts": {
         "check-code-style": [
-            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v"
+            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v --using-cache=no"
         ],
         "check-security": [
             "bin/local-php-security-checker"

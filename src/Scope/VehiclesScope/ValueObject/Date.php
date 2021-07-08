@@ -19,10 +19,10 @@ class Date
         Assert::that($date)
             ->date('Y-m-d');
 
-        $instane = new self();
-        $instane->date = $date;
+        $instance = new self();
+        $instance->date = $date;
 
-        return $instane;
+        return $instance;
     }
 
     public function toDateTime(): \DateTimeImmutable

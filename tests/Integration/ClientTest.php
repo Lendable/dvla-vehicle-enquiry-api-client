@@ -47,7 +47,7 @@ class ClientTest extends TestCase
     /**
      * @test
      */
-    public function it_should_request_vehicle_details_from_the_dvla_vehicle_enquiy_api(): void
+    public function it_should_request_vehicle_details_from_the_dvla_vehicle_enquiry_api(): void
     {
         $registrationNumber = 'BV65CXG';
         $fixture = $this->createFixture();

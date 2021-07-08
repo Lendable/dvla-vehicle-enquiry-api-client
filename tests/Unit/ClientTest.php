@@ -16,12 +16,12 @@ class ClientTest extends TestCase
     /**
      * @var HttpClient&MockObject
      */
-    private $httpClient;
+    private HttpClient $httpClient;
 
     /**
-     * @var MockObject&UriInterface
+     * @var UriInterface&MockObject
      */
-    private $baseUri;
+    private UriInterface $baseUri;
 
     private Client $fixture;
 
@@ -41,7 +41,7 @@ class ClientTest extends TestCase
     /**
      * @test
      */
-    public function it_should_create_the_vehicles_scope_with_own_path(): void
+    public function it_should_create_the_vehicles_scope_with_its_own_path(): void
     {
         $this->baseUri->method('getPath')
             ->willReturn('/aaa/bbb/ccc');

@@ -16,7 +16,7 @@ class Error
 
     private string $detail;
 
-    public function __construct()
+    private function __construct()
     {
     }
 

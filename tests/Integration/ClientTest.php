@@ -10,11 +10,12 @@ use GuzzleHttp\Psr7\Uri;
 use Lendable\Dvla\VehicleEnquiry\Auth\ApiKeyAuthHttpClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Auth\ValueObject\ApiKey;
 use Lendable\Dvla\VehicleEnquiry\Client;
-use Lendable\Dvla\VehicleEnquiry\GuzzleClientDecorator;
+use Lendable\Dvla\VehicleEnquiry\Psr18ClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response\EnquiryResponse;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
 use PHPUnit\Framework\TestCase;
+use Tests\Integration\Lendable\Dvla\VehicleEnquiry\Tool\GuzzlePsr18ClientDecorator;
 
 class ClientTest extends TestCase
 {
@@ -35,8 +36,10 @@ class ClientTest extends TestCase
 
         return new Client(
             new ApiKeyAuthHttpClientDecorator(
-                new GuzzleClientDecorator(
-                    new GuzzleHttpClient()
+                new Psr18ClientDecorator(
+                    new GuzzlePsr18ClientDecorator(
+                        new GuzzleHttpClient()
+                    ),
                 ),
                 ApiKey::fromString($config['token'])
             ),

@@ -6,7 +6,6 @@ namespace Tests\Integration\Lendable\Dvla\VehicleEnquiry;
 
 use Assert\Assert;
 use GuzzleHttp\Client as GuzzleHttpClient;
-use GuzzleHttp\Psr7\Uri;
 use Lendable\Dvla\VehicleEnquiry\Auth\ApiKeyAuthHttpClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Auth\ValueObject\ApiKey;
 use Lendable\Dvla\VehicleEnquiry\Client;
@@ -14,6 +13,7 @@ use Lendable\Dvla\VehicleEnquiry\Psr18ClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response\EnquiryResponse;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
+use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Lendable\Dvla\VehicleEnquiry\Tool\GuzzlePsr18ClientDecorator;
 

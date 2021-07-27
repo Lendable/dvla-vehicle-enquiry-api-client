@@ -13,9 +13,12 @@ use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithError;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithMessage;
 use Lendable\Dvla\VehicleEnquiry\Error\ValueObject\Error;
 use Lendable\Dvla\VehicleEnquiry\Error\ValueObject\Message;
-use Nyholm\Psr7\Request;
+use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Exception;
 use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
 class Psr18ClientDecorator implements HttpClient
@@ -26,10 +29,18 @@ class Psr18ClientDecorator implements HttpClient
 
     private ClientInterface $client;
 
+    private RequestFactoryInterface $requestFactory;
+
+    private StreamFactoryInterface $streamFactory;
+
     public function __construct(
-        ClientInterface $client
+        ClientInterface $client,
+        ?RequestFactoryInterface $requestFactory = null,
+        ?StreamFactoryInterface $streamFactory = null
     ) {
         $this->client = $client;
+        $this->requestFactory = $requestFactory ?? new Psr17Factory();
+        $this->streamFactory = $streamFactory ?? new Psr17Factory();
     }
 
     public function request(UriInterface $uri, HttpMethod $method, ?array $data = null, array $headers = []): Response
@@ -55,16 +66,19 @@ class Psr18ClientDecorator implements HttpClient
         }
     }
 
-    private function createPsrRequest(HttpMethod $method, UriInterface $uri, ?array $data, array $headers): Request
+    private function createPsrRequest(HttpMethod $method, UriInterface $uri, ?array $data, array $headers): RequestInterface
     {
-        $requestBody = $data !== null ? \json_encode($data, JSON_THROW_ON_ERROR) : null;
+        $request = $this->requestFactory->createRequest($method->toString(), $uri);
 
-        return new Request(
-            $method->toString(),
-            $uri,
-            \array_merge(self::HEADERS, $headers),
-            $requestBody
-        );
+        foreach (\array_merge(self::HEADERS, $headers) as $headerName => $headerValue) {
+            $request = $request->withAddedHeader($headerName, $headerValue);
+        }
+
+        if ($data !== null) {
+            $request = $request->withBody($this->streamFactory->createStream($this->createRequestBody($data)));
+        }
+
+        return $request;
     }
 
     private function handleInvalidStatusCode(int $statusCode, string $content): void
@@ -88,5 +102,10 @@ class Psr18ClientDecorator implements HttpClient
         }
 
         throw RequestFailed::dueToInvalidStatusCode($statusCode);
+    }
+
+    private function createRequestBody(array $data): string
+    {
+        return \json_encode($data, JSON_THROW_ON_ERROR);
     }
 }

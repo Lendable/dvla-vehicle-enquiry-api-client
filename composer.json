@@ -19,8 +19,69 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Lendable\\Dvla\\VehicleEnquiry\\Tests\\": "tests/"
+            "Tests\\Unit\\Lendable\\Dvla\\VehicleEnquiry\\": "tests/Unit/",
+            "Tests\\Functional\\Lendable\\Dvla\\VehicleEnquiry\\": "tests/Functional/",
+            "Tests\\Integration\\Lendable\\Dvla\\VehicleEnquiry\\": "tests/Integration/"
         }
     },
-    "require": {}
+    "require": {
+        "php": ">=7.4.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-beberlei-assert": "^0.12",
+        "phpstan/phpstan-deprecation-rules": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpstan/phpstan-strict-rules": "^0.12",
+        "phpunit/phpunit": "^9.5",
+        "slam/phpstan-extensions": "^5.0"
+    },
+
+    "scripts": {
+        "check-code-style": [
+            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v --using-cache=no"
+        ],
+        "check-security": [
+            "bin/local-php-security-checker"
+        ],
+        "fix-code-style": [
+            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --no-interaction --diff -v"
+        ],
+        "run-static-analysis": [
+            "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi"
+        ],
+        "run-tests": [
+            "@run-unit-tests",
+            "@run-functional-tests",
+            "@run-integration-tests"
+        ],
+        "run-unit-tests": [
+            "bin/phpunit --colors --do-not-cache-result tests/Unit/"
+        ],
+        "run-functional-tests": [
+            "bin/phpunit --colors --do-not-cache-result tests/Functional/"
+        ],
+        "run-integration-tests": [
+            "bin/phpunit --colors --do-not-cache-result tests/Integration/"
+        ],
+        "ci": [
+            "@check-code-style",
+            "@check-security",
+            "@run-static-analysis",
+            "@run-unit-tests",
+            "@run-functional-tests",
+            "@run-integration-tests"
+        ],
+        "run-ci": [
+            "ci/run.sh"
+        ]
+    },
+
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    },
+    "prefer-stable": true
 }

@@ -45,7 +45,7 @@
 
     "scripts": {
         "check-code-style": [
-            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v"
+            "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v --using-cache=no"
         ],
         "check-security": [
             "bin/local-php-security-checker"
@@ -62,13 +62,24 @@
             "@run-integration-tests"
         ],
         "run-unit-tests": [
-            "bin/phpunit tests/Unit/"
+            "bin/phpunit --colors --do-not-cache-result tests/Unit/"
         ],
         "run-functional-tests": [
-            "bin/phpunit tests/Functional/"
+            "bin/phpunit --colors --do-not-cache-result tests/Functional/"
         ],
         "run-integration-tests": [
-            "bin/phpunit tests/Integration/"
+            "bin/phpunit --colors --do-not-cache-result tests/Integration/"
+        ],
+        "ci": [
+            "@check-code-style",
+            "@check-security",
+            "@run-static-analysis",
+            "@run-unit-tests",
+            "@run-functional-tests",
+            "@run-integration-tests"
+        ],
+        "run-ci": [
+            "ci/run.sh"
         ]
     },
 

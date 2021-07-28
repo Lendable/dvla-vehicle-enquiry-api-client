@@ -15,43 +15,43 @@ class EnquiryResponse
 {
     private RegistrationNumber $registrationNumber;
 
-    private ?TaxStatus $taxStatus;
+    private ?TaxStatus $taxStatus = null;
 
-    private ?Date $taxDueDate;
+    private ?Date $taxDueDate = null;
 
-    private ?MotStatus $motStatus;
+    private ?MotStatus $motStatus = null;
 
-    private ?Date $motExpiryDate;
+    private ?Date $motExpiryDate = null;
 
-    private ?string $make;
+    private ?string $make = null;
 
-    private ?YearAndMonth $monthOfFirstDvlaRegistration;
+    private ?YearAndMonth $monthOfFirstDvlaRegistration = null;
 
-    private ?YearAndMonth $monthOfFirstRegistration;
+    private ?YearAndMonth $monthOfFirstRegistration = null;
 
-    private ?int $yearOfManufacture;
+    private ?int $yearOfManufacture = null;
 
-    private ?int $engineCapacity;
+    private ?int $engineCapacity = null;
 
-    private ?int $co2Emissions;
+    private ?int $co2Emissions = null;
 
-    private ?string $fuelType;
+    private ?string $fuelType = null;
 
-    private ?bool $markedForExport;
+    private ?bool $markedForExport = null;
 
-    private ?string $colour;
+    private ?string $colour = null;
 
-    private ?string $typeApproval;
+    private ?string $typeApproval = null;
 
-    private ?string $wheelplan;
+    private ?string $wheelplan = null;
 
-    private ?int $revenueWeight;
+    private ?int $revenueWeight = null;
 
-    private ?string $realDrivingEmissions;
+    private ?string $realDrivingEmissions = null;
 
-    private ?Date $dateOfLastV5CIssued;
+    private ?Date $dateOfLastV5CIssued = null;
 
-    private ?string $euroStatus;
+    private ?string $euroStatus = null;
 
     private function __construct()
     {

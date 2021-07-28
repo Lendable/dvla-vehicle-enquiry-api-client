@@ -1,7 +1,9 @@
 pipeline {
     agent { label 'loansworker' }
 
-    booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Set RUN_TESTS variable')
+    parameters {
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Set RUN_TESTS variable')
+    }
 
     stages {
         stage('Build') {

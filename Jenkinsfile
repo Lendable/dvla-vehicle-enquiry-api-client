@@ -13,8 +13,8 @@ pipeline {
             }
             steps {
                 ansiColor('xterm') {
-                    getSecret("secret/loans/dvla_vehicle_enquiry_api_client/config_test.json", "file", "/app/config_test.json")
                     sshagent (credentials: ['bb68a6f9-817a-44d2-b3d6-2b04f304210e']) {
+                        getSecret("secret/loans/dvla_vehicle_enquiry_api_client/config_test.json", "file", "/app/config_test.json")
                         sh './ci/run.sh'
                     }
                 }

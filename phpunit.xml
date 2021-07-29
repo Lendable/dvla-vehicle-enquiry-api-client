@@ -6,8 +6,14 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="Lendable's DVLA Vehicle Enquiry Service API Client Test Suite">
-      <directory>./tests</directory>
+    <testsuite name="unit">
+      <directory>./tests/Unit</directory>
+    </testsuite>
+    <testsuite name="functional">
+      <directory>./tests/Functional</directory>
+    </testsuite>
+    <testsuite name="integration">
+      <directory>./tests/Integration</directory>
     </testsuite>
   </testsuites>
 </phpunit>

@@ -26,53 +26,77 @@
     },
     "require": {
         "php": ">=7.4.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "beberlei/assert": "^3.2",
+        "nyholm/psr7": "^1.2",
+        "paragonie/hidden-string": "^1.0",
+        "psr/http-client": "^1.0.1",
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
+        "guzzlehttp/guzzle": "^6.0|^7.0",
+        "php-parallel-lint/php-parallel-lint": "^1.2",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-beberlei-assert": "^0.12",
         "phpstan/phpstan-deprecation-rules": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.11.20",
         "slam/phpstan-extensions": "^5.0"
     },
 
     "scripts": {
-        "check-code-style": [
+        "code-style:check": [
             "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v --using-cache=no"
         ],
-        "check-security": [
-            "bin/local-php-security-checker"
-        ],
-        "fix-code-style": [
+        "code-style:fix": [
             "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --no-interaction --diff -v"
         ],
-        "run-static-analysis": [
+        "security:check": [
+            "bin/local-php-security-checker"
+        ],
+        "static-analysis": [
             "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi"
         ],
-        "run-tests": [
-            "@run-unit-tests",
-            "@run-functional-tests",
-            "@run-integration-tests"
+        "lint:source": [
+            "parallel-lint src"
         ],
-        "run-unit-tests": [
-            "bin/phpunit --colors --do-not-cache-result tests/Unit/"
+        "lint:tests": [
+            "parallel-lint tests"
         ],
-        "run-functional-tests": [
-            "bin/phpunit --colors --do-not-cache-result tests/Functional/"
+        "lint:all": [
+            "@lint:source",
+            "@lint:tests"
         ],
-        "run-integration-tests": [
-            "bin/phpunit --colors --do-not-cache-result tests/Integration/"
+        "test:all": [
+            "@test:unit",
+            "@test:functional",
+            "@test:integration"
+        ],
+        "test:unit": [
+            "bin/phpunit --colors --do-not-cache-result --testsuite=unit"
+        ],
+        "test:functional": [
+            "bin/phpunit --colors --do-not-cache-result --testsuite=functional"
+        ],
+        "test:integration": [
+            "bin/phpunit --colors --do-not-cache-result --testsuite=integration"
+        ],
+        "rector:check": [
+            "rector --dry-run --ansi --no-progress-bar"
+        ],
+        "rector:fix": [
+            "rector --ansi --no-progress-bar"
         ],
         "ci": [
-            "@check-code-style",
-            "@check-security",
-            "@run-static-analysis",
-            "@run-unit-tests",
-            "@run-functional-tests",
-            "@run-integration-tests"
+            "@lint:all",
+            "@code-style:check",
+            "@security:check",
+            "@static-analysis",
+            "@rector:check",
+            "@test:all"
         ],
         "run-ci": [
             "ci/run.sh"

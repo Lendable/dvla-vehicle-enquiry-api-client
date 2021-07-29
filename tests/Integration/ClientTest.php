@@ -52,7 +52,7 @@ class ClientTest extends TestCase
      */
     public function it_should_request_vehicle_details_from_the_dvla_vehicle_enquiry_api(): void
     {
-        $registrationNumber = 'BV65CXG';
+        $registrationNumber = 'AA19PPP';
         $fixture = $this->createFixture();
         $request = EnquiryRequest::with(RegistrationNumber::fromString($registrationNumber));
 
@@ -60,6 +60,6 @@ class ClientTest extends TestCase
 
         $this->assertInstanceOf(EnquiryResponse::class, $response);
         $this->assertSame($registrationNumber, $response->getRegistrationNumber()->toString());
-        $this->assertSame(2015, $response->getYearOfManufacture());
+        $this->assertSame(2019, $response->getYearOfManufacture());
     }
 }

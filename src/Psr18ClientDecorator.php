@@ -14,7 +14,6 @@ use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithMessage;
 use Lendable\Dvla\VehicleEnquiry\Error\ValueObject\Error;
 use Lendable\Dvla\VehicleEnquiry\Error\ValueObject\Message;
 use Nyholm\Psr7\Factory\Psr17Factory;
-use PHPUnit\Exception;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
@@ -59,7 +58,7 @@ class Psr18ClientDecorator implements HttpClient
                 $psrResponse->getHeaders(),
                 Content::fromString($content)
             );
-        } catch (DvlaVehicleEnquiryFailure | Exception $exception) {
+        } catch (DvlaVehicleEnquiryFailure $exception) {
             throw $exception;
         } catch (\Throwable $exception) {
             throw RequestFailed::dueTo($exception);

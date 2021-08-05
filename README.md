@@ -5,7 +5,7 @@ DVLA Vehicle Enquiry API client
 [![License](https://poser.pugx.org/lendable/dvla-vehicle-enquiry-api-client/license)](https://packagist.org/packages/lendable/dvla-vehicle-enquiry-api-client)
 
 PHP client implementation for the DVLA Vehicle Enquiry API v1. This package provides:
-- API client what supports PSR-18 HTTP clients
+- API client that supports PSR-18 HTTP clients
 - token-based authentication
 - value objects for the request building and for the response
 
@@ -19,11 +19,11 @@ composer require lendable/dvla-vehicle-enquiry-api-client
 ## Usage
 
 The [Client](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Client.php) class implements the 
-DVLA's REST API and can return the [vehicles scope](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Scope/VehiclesScope/VehiclesScope.php) what can request the 
+DVLA's REST API and can return the [vehicles scope](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Scope/VehiclesScope/VehiclesScope.php) which can be used to request the 
 vehicle details.
 
 For the instantiation of the [Client](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Client.php) class 
-we need to inject the decorators what adds the API key authentication, and the PSR-18 compatibility layers.
+we need to inject the decorators which adds the API key authentication, and the PSR-18 compatibility layers.
 Also, we need to define the API's base URI to easily switch between UAT and live service.
 
 ### Base URI
@@ -40,15 +40,15 @@ The client accepts the URI in any [PSR-7](https://www.php-fig.org/psr/psr-7/) Ur
 The [ApiKeyAuthHttpClientDecorator](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Auth/ApiKeyAuthHttpClientDecorator.php) adds the required 
 API token authentication headers to the requests.
 The [ApiKey](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Auth/ValueObject/ApiKey.php) value 
-object keeps the token secret, avoids the accidental exposure.
+object keeps the token secret, avoiding accidental exposure.
 
 ### HTTP client
 
-With the [Psr18ClientDecorator](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Psr18ClientDecorator.php) client decorator 
-you can use any HTTP client what supporting the [PSR-18](https://www.php-fig.org/psr/psr-18/) standard to perform the prebuilt HTTP request. 
+With the [Psr18ClientDecorator](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/src/Psr18ClientDecorator.php)
+you can use any HTTP client which supports the [PSR-18](https://www.php-fig.org/psr/psr-18/) standard to perform the prebuilt HTTP request. 
 
-If you prefer to use HTTP client what not yet supporting the PSR-18 standard we are suggesting to make a simple decorator what calls the HTTP client 
-using the PSR-18 RequestInterface format request data and covert the HTTP client's response to a PSR-18 ResponseInterface format response.
+If you prefer to use an HTTP client that doesn't support the PSR-18 standard, you can alternatively make a simple decorator that calls the HTTP client 
+using the PSR-18 RequestInterface format request data and convert the HTTP client's response to a PSR-18 ResponseInterface format response.
 
 For example in our [integration test](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/tests/Integration/ClientTest.php) 
 we are using GuzzleClient with a [decorator](https://github.com/Lendable/dvla-vehicle-enquiry-api-client/blob/main/tests/Integration/Tool/GuzzlePsr18ClientDecorator.php) which using this PSR-18 conversion.

@@ -104,7 +104,10 @@
 
     "config": {
         "bin-dir": "bin",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.28"
+        }
     },
     "prefer-stable": true
 }

@@ -11,7 +11,6 @@ use Lendable\Dvla\VehicleEnquiry\Auth\ValueObject\ApiKey;
 use Lendable\Dvla\VehicleEnquiry\Client;
 use Lendable\Dvla\VehicleEnquiry\Psr18ClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response\EnquiryResponse;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
 use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +26,7 @@ class ClientTest extends TestCase
             ->readable('The config_test.json file must be readable.');
         $config = \file_get_contents($configPath);
         Assert::that($config)->isJsonString();
-        $config = \json_decode($config, true);
+        $config = \json_decode($config, true, 512, \JSON_THROW_ON_ERROR);
 
         Assert::that($config)
             ->isArray('Make sure the The config_test.json file contains valid JSON as like the config_test.dist.json.')
@@ -58,7 +57,6 @@ class ClientTest extends TestCase
 
         $response = $fixture->vehicles()->enquireDetails($request);
 
-        $this->assertInstanceOf(EnquiryResponse::class, $response);
         $this->assertSame($registrationNumber, $response->getRegistrationNumber()->toString());
         $this->assertSame(2019, $response->getYearOfManufacture());
     }

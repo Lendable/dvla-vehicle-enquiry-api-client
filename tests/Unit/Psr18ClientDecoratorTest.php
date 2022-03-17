@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Lendable\Dvla\VehicleEnquiry;
 
-use Lendable\Dvla\VehicleEnquiry\Client\Response;
-use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\Content;
 use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\HttpMethod;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestFailed;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithError;
@@ -88,9 +86,7 @@ class Psr18ClientDecoratorTest extends TestCase
             ]
         );
 
-        $this->assertInstanceOf(Response::class, $response);
         $this->assertSame(200, $response->statusCode());
-        $this->assertInstanceOf(Content::class, $response->content());
         $this->assertSame('{"test":1}', $response->content()->toString());
         $this->assertSame(['test' => 1], $response->content()->decode());
         $this->assertSame(

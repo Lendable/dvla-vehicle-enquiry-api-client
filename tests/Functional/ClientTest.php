@@ -13,7 +13,6 @@ use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithError;
 use Lendable\Dvla\VehicleEnquiry\Error\RequestRejectedWithMessage;
 use Lendable\Dvla\VehicleEnquiry\Psr18ClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response\EnquiryResponse;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\Date;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\MotStatus;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
@@ -116,7 +115,6 @@ class ClientTest extends TestCase
 
         $response = $this->fixture->vehicles()->enquireDetails($request);
 
-        $this->assertInstanceOf(EnquiryResponse::class, $response);
         $this->assertSame($registrationNumber, $response->getRegistrationNumber()->toString());
         $this->assertSame(172, $response->getCo2Emissions());
         $this->assertSame(2198, $response->getEngineCapacity());

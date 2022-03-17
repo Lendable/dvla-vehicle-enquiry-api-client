@@ -6,7 +6,6 @@ namespace Tests\Unit\Lendable\Dvla\VehicleEnquiry;
 
 use Lendable\Dvla\VehicleEnquiry\Client;
 use Lendable\Dvla\VehicleEnquiry\Client\HttpClient;
-use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\VehiclesScope;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
@@ -46,14 +45,10 @@ class ClientTest extends TestCase
         $this->baseUri->method('getPath')
             ->willReturn('/aaa/bbb/ccc');
 
-        $modifiedPath = $this->createMock(UriInterface::class);
-
         $this->baseUri->method('withPath')
             ->with('/aaa/bbb/ccc/vehicles')
-            ->willReturn($modifiedPath);
+            ->willReturn($this->createMock(UriInterface::class));
 
-        $vehiclesScope = $this->fixture->vehicles();
-
-        $this->assertInstanceOf(VehiclesScope::class, $vehiclesScope);
+        $this->fixture->vehicles();
     }
 }

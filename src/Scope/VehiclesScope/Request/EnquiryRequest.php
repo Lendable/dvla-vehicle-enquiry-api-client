@@ -30,6 +30,9 @@ class EnquiryRequest implements PayloadRequest
         return HttpMethod::post();
     }
 
+    /**
+     * @return array{registrationNumber: string}
+     */
     public function payload(): array
     {
         return [

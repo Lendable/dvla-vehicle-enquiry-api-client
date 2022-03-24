@@ -29,13 +29,15 @@
         "ext-json": "*",
         "beberlei/assert": "^3.2",
         "nyholm/psr7": "^1.2",
-        "paragonie/hidden-string": "^1.0 || ^2.0",
+        "paragonie/hidden-string": "^1|^2",
+        "paragonie/random_compat": "^2.0",
         "psr/http-client": "^1.0.1",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
-        "guzzlehttp/guzzle": "^6.0|^7.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "guzzlehttp/psr7": "^1.8.5|^2.2.1",
         "php-parallel-lint/php-parallel-lint": "^1.2",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-beberlei-assert": "^1.0",

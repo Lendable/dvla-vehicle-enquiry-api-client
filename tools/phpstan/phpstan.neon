@@ -1,8 +1,8 @@
 includes:
-    - %rootDir%/../../../vendor/phpstan/phpstan-phpunit/extension.neon
-    - %rootDir%/../../../vendor/phpstan/phpstan-beberlei-assert/extension.neon
-    - %rootDir%/../../../vendor/phpstan/phpstan-strict-rules/rules.neon
-    - %rootDir%/../../../vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - ../../vendor/phpstan/phpstan-phpunit/extension.neon
+    - ../../vendor/phpstan/phpstan-beberlei-assert/extension.neon
+    - ../../vendor/phpstan/phpstan-strict-rules/rules.neon
+    - ../../vendor/phpstan/phpstan-deprecation-rules/rules.neon
 
 parameters:
     level: 8

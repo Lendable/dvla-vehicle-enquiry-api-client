@@ -2614,16 +2614,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.20",
+            "version": "9.5.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "12bc8879fb65aef2138b26fc633cb1e3620cffba"
+                "reference": "0e32b76be457de00e83213528f6bb37e2a38fcb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/12bc8879fb65aef2138b26fc633cb1e3620cffba",
-                "reference": "12bc8879fb65aef2138b26fc633cb1e3620cffba",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0e32b76be457de00e83213528f6bb37e2a38fcb1",
+                "reference": "0e32b76be457de00e83213528f6bb37e2a38fcb1",
                 "shasum": ""
             },
             "require": {
@@ -2657,7 +2657,6 @@
                 "sebastian/version": "^3.0.2"
             },
             "require-dev": {
-                "ext-pdo": "*",
                 "phpspec/prophecy-phpunit": "^2.0.1"
             },
             "suggest": {
@@ -2701,7 +2700,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.20"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.21"
             },
             "funding": [
                 {
@@ -2713,7 +2712,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-01T12:37:26+00:00"
+            "time": "2022-06-19T12:14:25+00:00"
         },
         {
             "name": "psr/cache",
@@ -2958,16 +2957,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.13.4",
+            "version": "0.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "60b4f87a94e7ed17d4494982ba0cfb5a3f2845fd"
+                "reference": "4170aad2943b150149ba9594c34539e06ced6c6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/60b4f87a94e7ed17d4494982ba0cfb5a3f2845fd",
-                "reference": "60b4f87a94e7ed17d4494982ba0cfb5a3f2845fd",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/4170aad2943b150149ba9594c34539e06ced6c6b",
+                "reference": "4170aad2943b150149ba9594c34539e06ced6c6b",
                 "shasum": ""
             },
             "require": {
@@ -3006,7 +3005,7 @@
             "description": "Instant Upgrade and Automated Refactoring of any PHP code",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.13.4"
+                "source": "https://github.com/rectorphp/rector/tree/0.13.5"
             },
             "funding": [
                 {
@@ -3014,7 +3013,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-04T08:19:56+00:00"
+            "time": "2022-06-09T12:54:02+00:00"
         },
         {
             "name": "sebastian/cli-parser",

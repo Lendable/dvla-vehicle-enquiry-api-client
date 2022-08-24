@@ -56,6 +56,10 @@ jobs:
               if: ${{ matrix.dependencies == 'locked' }}
               run: "composer install --no-interaction --no-progress --ansi"
 
+            - name: "Dependency vulnerability check"
+              if: ${{ matrix.dependencies != 'lowest' }} # TODO fix that we're allowing lowest with known vulnerable versions
+              run: "composer security:check"
+
             - name: "Validate Composer dependencies"
               run: "composer validate"
 
@@ -68,10 +72,6 @@ jobs:
             - name: "Code style check"
               if: ${{ matrix.dependencies == 'locked' }}
               run: "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --dry-run --no-interaction --diff -v --using-cache=no"
-
-            - name: "Security check"
-              if: ${{ matrix.dependencies != 'lowest' }}
-              run: "bin/local-php-security-checker"
 
             - name: "Run PHPStan"
               if: ${{ matrix.dependencies != 'lowest' }}

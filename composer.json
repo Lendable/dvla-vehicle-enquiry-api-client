@@ -54,7 +54,7 @@
             "bin/php-cs-fixer fix --config='./tools/php-cs-fixer/config.php' --show-progress=none --no-interaction --diff -v"
         ],
         "security:check": [
-            "bin/local-php-security-checker"
+            "@composer audit"
         ],
         "static-analysis": [
             "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi"

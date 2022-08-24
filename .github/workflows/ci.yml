@@ -41,7 +41,6 @@ jobs:
                 dependency-versions: "${{ matrix.dependencies }}"
 
             - name: "Dependency vulnerability check"
-              if: ${{ matrix.dependencies != 'lowest' }} # TODO fix that we're allowing lowest with known vulnerable versions
               run: "composer security:check"
 
             - name: "Validate Composer dependencies"

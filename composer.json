@@ -30,7 +30,7 @@
         "beberlei/assert": "^3.2",
         "nyholm/psr7": "^1.2",
         "paragonie/hidden-string": "^2.0",
-        "paragonie/random_compat": ">=9.99.100",
+        "paragonie/random_compat": "^9.99.100",
         "psr/http-client": "^1.0.1",
         "psr/http-message": "^1.0"
     },

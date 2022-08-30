@@ -8,21 +8,14 @@ use Assert\Assert;
 
 class RegistrationNumber
 {
-    private string $value;
-
-    private function __construct()
+    private function __construct(private string $value)
     {
+        Assert::that($this->value)->notEmpty('Registration number should not be empty.');
     }
 
-    public static function fromString(
-        string $registrationNumber
-    ): self {
-        Assert::that($registrationNumber)->notEmpty('Registration number should not be empty.');
-
-        $instance = new self();
-        $instance->value = $registrationNumber;
-
-        return $instance;
+    public static function fromString(string $registrationNumber): self
+    {
+        return new self($registrationNumber);
     }
 
     public function toString(): string

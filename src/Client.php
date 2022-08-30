@@ -10,14 +10,8 @@ use Psr\Http\Message\UriInterface;
 
 class Client
 {
-    private HttpClient $httpClient;
-
-    private UriInterface $uri;
-
-    public function __construct(HttpClient $httpClient, UriInterface $uri)
+    public function __construct(private HttpClient $httpClient, private UriInterface $uri)
     {
-        $this->httpClient = $httpClient;
-        $this->uri = $uri;
     }
 
     public function vehicles(): VehiclesScope

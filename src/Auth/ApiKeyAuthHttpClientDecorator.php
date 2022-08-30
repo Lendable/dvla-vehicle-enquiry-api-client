@@ -12,16 +12,8 @@ use Psr\Http\Message\UriInterface;
 
 class ApiKeyAuthHttpClientDecorator implements HttpClient
 {
-    private HttpClient $innerClient;
-
-    private ApiKey $apiKey;
-
-    public function __construct(
-        HttpClient $innerClient,
-        ApiKey $apiKey
-    ) {
-        $this->innerClient = $innerClient;
-        $this->apiKey = $apiKey;
+    public function __construct(private HttpClient $innerClient, private ApiKey $apiKey)
+    {
     }
 
     /**

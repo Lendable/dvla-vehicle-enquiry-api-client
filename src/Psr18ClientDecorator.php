@@ -26,18 +26,15 @@ class Psr18ClientDecorator implements HttpClient
         'Content-Type' => 'application/json; charset=utf-8',
     ];
 
-    private ClientInterface $client;
-
     private RequestFactoryInterface $requestFactory;
 
     private StreamFactoryInterface $streamFactory;
 
     public function __construct(
-        ClientInterface $client,
+        private ClientInterface $client,
         ?RequestFactoryInterface $requestFactory = null,
         ?StreamFactoryInterface $streamFactory = null
     ) {
-        $this->client = $client;
         $this->requestFactory = $requestFactory ?? new Psr17Factory();
         $this->streamFactory = $streamFactory ?? new Psr17Factory();
     }

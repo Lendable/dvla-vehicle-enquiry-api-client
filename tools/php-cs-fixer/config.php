@@ -15,6 +15,7 @@ return (new PhpCsFixer\Config())
             '@PHP71Migration' => true,
             '@PHP73Migration' => true,
             '@PHP74Migration' => true,
+            '@PHP80Migration' => true,
             '@DoctrineAnnotation' => true,
             '@PHPUnit60Migration:risky' => true,
             '@PHP71Migration:risky' => true,

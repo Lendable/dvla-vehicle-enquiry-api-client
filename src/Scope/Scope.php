@@ -12,13 +12,10 @@ use Psr\Http\Message\UriInterface;
 
 abstract class Scope
 {
-    private HttpClient $client;
-
     private UriInterface $baseUri;
 
-    public function __construct(HttpClient $client, UriInterface $baseUri)
+    public function __construct(private HttpClient $client, UriInterface $baseUri)
     {
-        $this->client = $client;
         $this->baseUri = $baseUri->withPath($baseUri->getPath().'/'.static::pathFragment());
     }
 

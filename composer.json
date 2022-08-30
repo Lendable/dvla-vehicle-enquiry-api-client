@@ -4,7 +4,7 @@
     "keywords": ["DVLA", "DVLA Vehicle Enquiry Service"],
     "homepage": "https://www.lendable.co.uk",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Lendable Ltd",

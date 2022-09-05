@@ -13,11 +13,8 @@ use Psr\Http\Message\ResponseInterface;
 
 class GuzzlePsr18ClientDecorator implements ClientInterface
 {
-    private GuzzleClientInterface $client;
-
-    public function __construct(GuzzleClientInterface $client)
+    public function __construct(private GuzzleClientInterface $client)
     {
-        $this->client = $client;
     }
 
     public function sendRequest(RequestInterface $request): ResponseInterface

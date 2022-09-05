@@ -8,21 +8,15 @@ use Assert\Assert;
 
 class YearAndMonth
 {
-    private string $value;
-
-    private function __construct()
+    private function __construct(private string $value)
     {
+        Assert::that($this->value)
+            ->date('Y-m');
     }
 
     public static function fromString(string $date): self
     {
-        Assert::that($date)
-            ->date('Y-m');
-
-        $instance = new self();
-        $instance->value = $date;
-
-        return $instance;
+        return new self($date);
     }
 
     public function toDateTime(): \DateTimeImmutable

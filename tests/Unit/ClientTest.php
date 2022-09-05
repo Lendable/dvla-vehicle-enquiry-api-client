@@ -45,7 +45,9 @@ class ClientTest extends TestCase
         $this->baseUri->method('getPath')
             ->willReturn('/aaa/bbb/ccc');
 
-        $this->baseUri->method('withPath')
+        $this->baseUri
+            ->expects($this->once())
+            ->method('withPath')
             ->with('/aaa/bbb/ccc/vehicles')
             ->willReturn($this->createMock(UriInterface::class));
 

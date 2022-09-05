@@ -9,31 +9,18 @@ use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\Content;
 
 class Response
 {
-    private int $statusCode;
-
-    /**
-     * @var array<string, array<string>>
-     */
-    private array $headers;
-
     /**
      * @var array<string, array<string>>
      */
     private array $normalizedHeaders = [];
 
-    private Content $content;
-
     /**
      * @param array<string, array<string>> $headers
      */
-    private function __construct(int $statusCode, array $headers, Content $content)
+    private function __construct(private int $statusCode, private array $headers, private Content $content)
     {
         // Non-2xx range are modelled as exceptions.
-        Assert::that($statusCode)->range(200, 299);
-
-        $this->statusCode = $statusCode;
-        $this->content = $content;
-        $this->headers = $headers;
+        Assert::that($this->statusCode)->range(200, 299);
 
         foreach ($this->headers as $header => $value) {
             $this->normalizedHeaders[\strtolower($header)] = $value;

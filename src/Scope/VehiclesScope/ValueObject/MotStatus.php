@@ -20,18 +20,14 @@ class MotStatus
         self::VALID => 1,
     ];
 
-    private string $value;
-
     /**
      * @var array<string, self>
      */
     private static array $lazyLoad = [];
 
-    private function __construct(string $value)
+    private function __construct(private string $value)
     {
-        Assert::that(self::ALL)->keyIsset($value);
-
-        $this->value = $value;
+        Assert::that(self::ALL)->keyIsset($this->value);
     }
 
     public static function fromString(string $value): self
@@ -41,11 +37,7 @@ class MotStatus
 
     private static function lazyLoad(string $value): self
     {
-        if (isset(self::$lazyLoad[$value])) {
-            return self::$lazyLoad[$value];
-        }
-
-        return self::$lazyLoad[$value] = new self($value);
+        return self::$lazyLoad[$value] ??= new self($value);
     }
 
     public function equals(self $other): bool

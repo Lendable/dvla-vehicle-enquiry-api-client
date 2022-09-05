@@ -10,19 +10,13 @@ use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNum
 
 class EnquiryRequest implements PayloadRequest
 {
-    private RegistrationNumber $registrationNumber;
-
-    private function __construct()
+    private function __construct(private RegistrationNumber $registrationNumber)
     {
     }
 
-    public static function with(
-        RegistrationNumber $registrationNumber
-    ): self {
-        $instance = new self();
-        $instance->registrationNumber = $registrationNumber;
-
-        return $instance;
+    public static function with(RegistrationNumber $registrationNumber): self
+    {
+        return new self($registrationNumber);
     }
 
     public function method(): HttpMethod

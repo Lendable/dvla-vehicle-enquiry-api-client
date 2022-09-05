@@ -6,18 +6,13 @@ namespace Lendable\Dvla\VehicleEnquiry\Error\ValueObject;
 
 class Message
 {
-    private string $value;
-
-    private function __construct()
+    private function __construct(private string $value)
     {
     }
 
     public static function fromString(string $message): self
     {
-        $instance = new self();
-        $instance->value = $message;
-
-        return $instance;
+        return new self($message);
     }
 
     public function toString(): string

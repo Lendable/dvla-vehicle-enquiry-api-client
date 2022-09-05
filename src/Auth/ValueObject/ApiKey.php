@@ -8,18 +8,13 @@ use ParagonIE\HiddenString\HiddenString;
 
 class ApiKey
 {
-    private HiddenString $value;
-
-    private function __construct()
+    private function __construct(private HiddenString $value)
     {
     }
 
     public static function fromString(string $token): self
     {
-        $instance = new self();
-        $instance->value = new HiddenString($token, true, true);
-
-        return $instance;
+        return new self(new HiddenString($token, true, true));
     }
 
     public function toString(): string

@@ -18,16 +18,13 @@ class DecodingFailure extends \RuntimeException implements DvlaVehicleEnquiryFai
         return new self('Failed to decode response content.', 0, $cause);
     }
 
-    /**
-     * @param string|int|float|bool|array<mixed>|null $actualValue
-     */
-    public static function unexpectedType(string $expectedType, $actualValue): self
+    public static function unexpectedType(string $expectedType, mixed $actualValue): self
     {
         return new self(
             \sprintf(
                 'Failed to decode response content, unexpected type decoded to. Expected %s, got %s.',
                 $expectedType,
-                \gettype($actualValue)
+                \get_debug_type($actualValue)
             )
         );
     }

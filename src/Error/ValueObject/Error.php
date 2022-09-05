@@ -8,16 +8,12 @@ use Assert\Assert;
 
 class Error
 {
-    private string $status;
-
-    private string $code;
-
-    private string $title;
-
-    private string $detail;
-
-    private function __construct()
-    {
+    private function __construct(
+        private string $status,
+        private string $code,
+        private string $title,
+        private string $detail
+    ) {
     }
 
     public static function fromArray(array $data): self
@@ -28,13 +24,12 @@ class Error
             ->keyExists('title')
             ->keyExists('detail');
 
-        $instance = new self();
-        $instance->status = $data['status'];
-        $instance->code = $data['code'];
-        $instance->title = $data['title'];
-        $instance->detail = $data['detail'];
-
-        return $instance;
+        return new self(
+            $data['status'],
+            $data['code'],
+            $data['title'],
+            $data['detail']
+        );
     }
 
     public function getStatus(): string

@@ -16,14 +16,12 @@ class HttpMethod
 
     private const DELETE = 'DELETE';
 
-    private string $value;
-
     /**
      * @var array<string, HttpMethod>
      */
     private static array $lazyLoad = [];
 
-    private function __construct()
+    private function __construct(private string $value)
     {
     }
 
@@ -54,14 +52,7 @@ class HttpMethod
 
     private static function lazyLoad(string $value): self
     {
-        if (isset(self::$lazyLoad[$value])) {
-            return self::$lazyLoad[$value];
-        }
-
-        $instance = new self();
-        $instance->value = $value;
-
-        return self::$lazyLoad[$value] = $instance;
+        return self::$lazyLoad[$value] ??= new self($value);
     }
 
     public function equals(HttpMethod $other): bool

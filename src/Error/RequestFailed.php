@@ -6,7 +6,7 @@ namespace Lendable\Dvla\VehicleEnquiry\Error;
 
 use Lendable\Dvla\VehicleEnquiry\DvlaVehicleEnquiryFailure;
 
-class RequestFailed extends \RuntimeException implements DvlaVehicleEnquiryFailure
+final class RequestFailed extends \RuntimeException implements DvlaVehicleEnquiryFailure
 {
     private function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
     {

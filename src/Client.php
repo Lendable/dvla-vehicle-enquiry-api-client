@@ -8,9 +8,9 @@ use Lendable\Dvla\VehicleEnquiry\Client\HttpClient;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\VehiclesScope;
 use Psr\Http\Message\UriInterface;
 
-class Client
+final class Client
 {
-    public function __construct(private HttpClient $httpClient, private UriInterface $uri)
+    public function __construct(private readonly HttpClient $httpClient, private readonly UriInterface $uri)
     {
     }
 

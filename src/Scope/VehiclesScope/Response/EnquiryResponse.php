@@ -11,7 +11,7 @@ use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNum
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\TaxStatus;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\YearAndMonth;
 
-class EnquiryResponse
+final class EnquiryResponse
 {
     private RegistrationNumber $registrationNumber;
 

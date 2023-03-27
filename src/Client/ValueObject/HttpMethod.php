@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lendable\Dvla\VehicleEnquiry\Client\ValueObject;
 
-class HttpMethod
+final class HttpMethod
 {
     private const GET = 'GET';
 
@@ -21,7 +21,7 @@ class HttpMethod
      */
     private static array $lazyLoad = [];
 
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
     }
 

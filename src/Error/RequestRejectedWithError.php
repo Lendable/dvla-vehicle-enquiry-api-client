@@ -7,7 +7,7 @@ namespace Lendable\Dvla\VehicleEnquiry\Error;
 use Lendable\Dvla\VehicleEnquiry\DvlaVehicleEnquiryFailure;
 use Lendable\Dvla\VehicleEnquiry\Error\ValueObject\Error;
 
-class RequestRejectedWithError extends \RuntimeException implements DvlaVehicleEnquiryFailure
+final class RequestRejectedWithError extends \RuntimeException implements DvlaVehicleEnquiryFailure
 {
     private Error $error;
 

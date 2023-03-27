@@ -8,7 +8,7 @@ use Lendable\Dvla\VehicleEnquiry\Scope\Scope;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Response\EnquiryResponse;
 
-class VehiclesScope extends Scope
+final class VehiclesScope extends Scope
 {
     protected static function pathFragment(): string
     {

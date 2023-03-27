@@ -6,9 +6,9 @@ namespace Lendable\Dvla\VehicleEnquiry\Client\ValueObject;
 
 use Lendable\Dvla\VehicleEnquiry\Client\DecodingFailure;
 
-class Content
+final class Content
 {
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
     }
 

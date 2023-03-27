@@ -17,12 +17,9 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\UriInterface;
 
-class Psr18ClientDecoratorTest extends TestCase
+final class Psr18ClientDecoratorTest extends TestCase
 {
-    /**
-     * @var ClientInterface&MockObject
-     */
-    private ClientInterface $httpClient;
+    private ClientInterface&MockObject $httpClient;
 
     private Psr18ClientDecorator $fixture;
 

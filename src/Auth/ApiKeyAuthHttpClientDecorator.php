@@ -10,9 +10,9 @@ use Lendable\Dvla\VehicleEnquiry\Client\Response;
 use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\HttpMethod;
 use Psr\Http\Message\UriInterface;
 
-class ApiKeyAuthHttpClientDecorator implements HttpClient
+final class ApiKeyAuthHttpClientDecorator implements HttpClient
 {
-    public function __construct(private HttpClient $innerClient, private ApiKey $apiKey)
+    public function __construct(private readonly HttpClient $innerClient, private readonly ApiKey $apiKey)
     {
     }
 
@@ -26,12 +26,10 @@ class ApiKeyAuthHttpClientDecorator implements HttpClient
             $uri,
             $method,
             $data,
-            \array_merge(
-                [
-                    'x-api-key' => $this->apiKey->toString(),
-                ],
-                $headers
-            )
+            [
+                'x-api-key' => $this->apiKey->toString(),
+                ...$headers,
+            ]
         );
     }
 }

@@ -10,17 +10,11 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
-    /**
-     * @var HttpClient&MockObject
-     */
-    private HttpClient $httpClient;
+    private HttpClient&MockObject $httpClient;
 
-    /**
-     * @var UriInterface&MockObject
-     */
-    private UriInterface $baseUri;
+    private UriInterface&MockObject $baseUri;
 
     private Client $fixture;
 

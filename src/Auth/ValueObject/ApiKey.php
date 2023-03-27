@@ -6,9 +6,9 @@ namespace Lendable\Dvla\VehicleEnquiry\Auth\ValueObject;
 
 use ParagonIE\HiddenString\HiddenString;
 
-class ApiKey
+final class ApiKey
 {
-    private function __construct(private HiddenString $value)
+    private function __construct(private readonly HiddenString $value)
     {
     }
 

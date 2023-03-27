@@ -25,7 +25,7 @@
         }
     },
     "require": {
-        "php": ">=8.0,<9",
+        "php": ">=8.1,<9",
         "ext-json": "*",
         "beberlei/assert": "^3.2",
         "nyholm/psr7": "^1.2",
@@ -58,7 +58,8 @@
             "@composer audit"
         ],
         "static-analysis": [
-            "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi"
+            "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi",
+            "@rector:check"
         ],
         "lint:source": [
             "parallel-lint src"
@@ -107,7 +108,7 @@
         "bin-dir": "bin",
         "sort-packages": true,
         "platform": {
-            "php": "8.0.11"
+            "php": "8.1.16"
         }
     },
     "prefer-stable": true

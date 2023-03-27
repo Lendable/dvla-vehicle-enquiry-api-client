@@ -6,7 +6,7 @@ namespace Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject;
 
 use Assert\Assert;
 
-class TaxStatus
+final class TaxStatus
 {
     public const NOT_TAXED_FOR_ON_ROAD_USE = 'Not Taxed for on Road Use';
     public const SORN = 'SORN';
@@ -25,7 +25,7 @@ class TaxStatus
      */
     private static array $lazyLoad = [];
 
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
         Assert::that(self::ALL)->keyIsset($this->value);
     }

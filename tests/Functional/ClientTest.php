@@ -25,16 +25,13 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     private const BASE_URL = 'https://127.0.0.1:1234/aaa/bbb/ccc';
 
     private const AUTH_TOKEN = 'ASD-123-456';
 
-    /**
-     * @var ClientInterface&MockObject
-     */
-    private ClientInterface $httpClient;
+    private ClientInterface&MockObject $httpClient;
 
     private Client $fixture;
 

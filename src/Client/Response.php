@@ -7,7 +7,7 @@ namespace Lendable\Dvla\VehicleEnquiry\Client;
 use Assert\Assert;
 use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\Content;
 
-class Response
+final class Response
 {
     /**
      * @var array<string, array<string>>
@@ -17,8 +17,11 @@ class Response
     /**
      * @param array<string, array<string>> $headers
      */
-    private function __construct(private int $statusCode, private array $headers, private Content $content)
-    {
+    private function __construct(
+        private readonly int $statusCode,
+        private readonly array $headers,
+        private readonly Content $content,
+    ) {
         // Non-2xx range are modelled as exceptions.
         Assert::that($this->statusCode)->range(200, 299);
 

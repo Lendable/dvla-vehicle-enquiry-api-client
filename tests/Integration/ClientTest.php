@@ -13,6 +13,7 @@ use Lendable\Dvla\VehicleEnquiry\Psr18ClientDecorator;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\Request\EnquiryRequest;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
 use Nyholm\Psr7\Uri;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Lendable\Dvla\VehicleEnquiry\Tool\GuzzlePsr18ClientDecorator;
 
@@ -46,9 +47,7 @@ final class ClientTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_should_request_vehicle_details_from_the_dvla_vehicle_enquiry_api(): void
     {
         $registrationNumber = 'AA19PPP';

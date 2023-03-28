@@ -6,7 +6,7 @@ namespace Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject;
 
 use Assert\Assert;
 
-class MotStatus
+final class MotStatus
 {
     public const NO_DETAILS_HELD = 'No details held by DVLA';
     public const NO_RESULT = 'No results returned';
@@ -25,7 +25,7 @@ class MotStatus
      */
     private static array $lazyLoad = [];
 
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
         Assert::that(self::ALL)->keyIsset($this->value);
     }

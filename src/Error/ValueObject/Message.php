@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Lendable\Dvla\VehicleEnquiry\Error\ValueObject;
 
-class Message
+final class Message
 {
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
     }
 

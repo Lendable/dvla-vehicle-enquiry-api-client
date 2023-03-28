@@ -6,9 +6,9 @@ namespace Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject;
 
 use Assert\Assert;
 
-class RegistrationNumber
+final class RegistrationNumber
 {
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
         Assert::that($this->value)->notEmpty('Registration number should not be empty.');
     }

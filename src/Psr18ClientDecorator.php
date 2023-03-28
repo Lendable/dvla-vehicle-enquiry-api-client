@@ -20,23 +20,17 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-class Psr18ClientDecorator implements HttpClient
+final class Psr18ClientDecorator implements HttpClient
 {
     private const HEADERS = [
         'Content-Type' => 'application/json; charset=utf-8',
     ];
 
-    private RequestFactoryInterface $requestFactory;
-
-    private StreamFactoryInterface $streamFactory;
-
     public function __construct(
-        private ClientInterface $client,
-        ?RequestFactoryInterface $requestFactory = null,
-        ?StreamFactoryInterface $streamFactory = null
+        private readonly ClientInterface $client,
+        private readonly RequestFactoryInterface $requestFactory = new Psr17Factory(),
+        private readonly StreamFactoryInterface $streamFactory = new Psr17Factory(),
     ) {
-        $this->requestFactory = $requestFactory ?? new Psr17Factory();
-        $this->streamFactory = $streamFactory ?? new Psr17Factory();
     }
 
     public function request(UriInterface $uri, HttpMethod $method, ?array $data = null, array $headers = []): Response

@@ -11,9 +11,9 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class GuzzlePsr18ClientDecorator implements ClientInterface
+final class GuzzlePsr18ClientDecorator implements ClientInterface
 {
-    public function __construct(private GuzzleClientInterface $client)
+    public function __construct(private readonly GuzzleClientInterface $client)
     {
     }
 

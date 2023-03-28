@@ -10,7 +10,10 @@ use Rector\Set\ValueObject\SetList;
 return static function (RectorConfig $rector): void {
     $rector->parallel();
     $rector->paths([__DIR__.'/src', __DIR__.'/tests']);
-    $rector->phpVersion(PhpVersion::PHP_80);
+    $rector->phpVersion(PhpVersion::PHP_81);
     $rector->phpstanConfig(__DIR__.'/tools/phpstan/phpstan-rector.neon');
-    $rector->sets([SetList::CODE_QUALITY, LevelSetList::UP_TO_PHP_80]);
+    $rector->sets([
+        SetList::CODE_QUALITY,
+        LevelSetList::UP_TO_PHP_81,
+    ]);
 };

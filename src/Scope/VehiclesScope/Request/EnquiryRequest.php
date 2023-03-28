@@ -8,9 +8,9 @@ use Lendable\Dvla\VehicleEnquiry\Client\PayloadRequest;
 use Lendable\Dvla\VehicleEnquiry\Client\ValueObject\HttpMethod;
 use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\RegistrationNumber;
 
-class EnquiryRequest implements PayloadRequest
+final class EnquiryRequest implements PayloadRequest
 {
-    private function __construct(private RegistrationNumber $registrationNumber)
+    private function __construct(private readonly RegistrationNumber $registrationNumber)
     {
     }
 

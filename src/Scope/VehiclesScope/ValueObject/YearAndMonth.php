@@ -6,9 +6,9 @@ namespace Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject;
 
 use Assert\Assert;
 
-class YearAndMonth
+final class YearAndMonth
 {
-    private function __construct(private string $value)
+    private function __construct(private readonly string $value)
     {
         Assert::that($this->value)
             ->date('Y-m');

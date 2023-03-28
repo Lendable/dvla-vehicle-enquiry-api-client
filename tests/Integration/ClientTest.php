@@ -16,7 +16,7 @@ use Nyholm\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Lendable\Dvla\VehicleEnquiry\Tool\GuzzlePsr18ClientDecorator;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     private function createFixture(): Client
     {

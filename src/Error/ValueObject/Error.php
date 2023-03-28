@@ -6,13 +6,13 @@ namespace Lendable\Dvla\VehicleEnquiry\Error\ValueObject;
 
 use Assert\Assert;
 
-class Error
+final class Error
 {
     private function __construct(
-        private string $status,
-        private string $code,
-        private string $title,
-        private string $detail
+        private readonly string $status,
+        private readonly string $code,
+        private readonly string $title,
+        private readonly string $detail
     ) {
     }
 

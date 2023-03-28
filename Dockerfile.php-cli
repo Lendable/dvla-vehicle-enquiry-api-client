@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.0.0-experimental
-FROM lendableuk/php-fpm-alpine:8.0.11-alpine3.13 as base
+FROM lendableuk/php-fpm-alpine:8.1.16-alpine3.17 as base
 
 COPY --from=composer:2.5.1 /usr/bin/composer /usr/bin/composer
 

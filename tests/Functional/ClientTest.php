@@ -21,6 +21,8 @@ use Lendable\Dvla\VehicleEnquiry\Scope\VehiclesScope\ValueObject\YearAndMonth;
 use Nyholm\Psr7\Request as Psr7Request;
 use Nyholm\Psr7\Response as Psr7Response;
 use Nyholm\Psr7\Uri;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
@@ -52,9 +54,7 @@ final class ClientTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_should_request_vehicle_details_with_the_given_registration_number_and_decode_response(): void
     {
         $registrationNumber = 'BV65CXG';
@@ -136,10 +136,9 @@ final class ClientTest extends TestCase
 
     /**
      * @psalm-param class-string<\Throwable> $expectedExceptionClass
-     *
-     * @test
-     * @dataProvider providesErrorResponses
      */
+    #[DataProvider('providesErrorResponses')]
+    #[Test]
     public function it_should_throw_exception_on_api_error(
         string $expectedExceptionClass,
         string $expectedExceptionMessage,
@@ -163,7 +162,7 @@ final class ClientTest extends TestCase
         $this->fixture->vehicles()->enquireDetails($request);
     }
 
-    public function providesErrorResponses(): iterable
+    public static function providesErrorResponses(): iterable
     {
         yield 'Vehicle Not Found error' => [
             'expectedExceptionClass' => RequestRejectedWithError::class,
@@ -259,10 +258,8 @@ final class ClientTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider providesErrorResponses
-     */
+    #[DataProvider('providesErrorResponses')]
+    #[Test]
     public function it_should_throw_exception_on_unsupported_response(): void
     {
         $responseBody =

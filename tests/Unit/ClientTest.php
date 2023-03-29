@@ -6,6 +6,7 @@ namespace Tests\Unit\Lendable\Dvla\VehicleEnquiry;
 
 use Lendable\Dvla\VehicleEnquiry\Client;
 use Lendable\Dvla\VehicleEnquiry\Client\HttpClient;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
@@ -31,9 +32,7 @@ final class ClientTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_should_create_the_vehicles_scope_with_its_own_path(): void
     {
         $this->baseUri->method('getPath')

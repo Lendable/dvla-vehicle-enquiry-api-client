@@ -69,7 +69,7 @@ final class EnquiryResponse
         $instance->registrationNumber = RegistrationNumber::fromString($data['registrationNumber']);
         $instance->taxStatus = isset($data['taxStatus']) ? TaxStatus::fromString($data['taxStatus']) : null;
         $instance->taxDueDate = isset($data['taxDueDate']) ? Date::fromString($data['taxDueDate']) : null;
-        $instance->motStatus = isset($data['motStatus']) ? MotStatus::fromString($data['motStatus']) : null;
+        $instance->motStatus = isset($data['motStatus']) ? MotStatus::from($data['motStatus']) : null;
         $instance->motExpiryDate = isset($data['motExpiryDate']) ? Date::fromString($data['motExpiryDate']) : null;
         $instance->make = $data['make'] ?? null;
         $instance->monthOfFirstDvlaRegistration = isset($data['monthOfFirstDvlaRegistration']) ? YearAndMonth::fromString($data['monthOfFirstDvlaRegistration']) : null;

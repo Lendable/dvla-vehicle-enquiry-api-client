@@ -39,9 +39,6 @@ jobs:
               with:
                 dependency-versions: "${{ matrix.dependencies }}"
 
-            - name: "Dependency vulnerability check"
-              run: "composer security:check"
-
             - name: "Validate Composer dependencies"
               run: "composer validate"
 

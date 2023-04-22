@@ -21,7 +21,7 @@ final class EnquiryRequest implements PayloadRequest
 
     public function method(): HttpMethod
     {
-        return HttpMethod::post();
+        return HttpMethod::POST;
     }
 
     /**

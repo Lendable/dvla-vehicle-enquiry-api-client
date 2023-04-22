@@ -73,7 +73,7 @@ final class Psr18ClientDecoratorTest extends TestCase
 
         $response = $this->fixture->request(
             $uri,
-            HttpMethod::post(),
+            HttpMethod::POST,
             [
                 'foo' => 1,
                 'baz' => true,
@@ -126,7 +126,7 @@ final class Psr18ClientDecoratorTest extends TestCase
 
         $this->fixture->request(
             $this->createMock(UriInterface::class),
-            HttpMethod::post()
+            HttpMethod::POST
         );
     }
 
@@ -240,7 +240,7 @@ final class Psr18ClientDecoratorTest extends TestCase
 
         $this->fixture->request(
             $this->createMock(UriInterface::class),
-            HttpMethod::post()
+            HttpMethod::POST
         );
     }
 }

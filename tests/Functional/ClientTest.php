@@ -117,7 +117,7 @@ final class ClientTest extends TestCase
         $this->assertSame(2198, $response->getEngineCapacity());
         $this->assertFalse($response->getMarkedForExport());
         $this->assertSame('DIESEL', $response->getFuelType());
-        $this->assertSame(MotStatus::fromString(MotStatus::VALID), $response->getMotStatus());
+        $this->assertSame(MotStatus::VALID, $response->getMotStatus());
         $this->assertSame(3000, $response->getRevenueWeight());
         $this->assertSame('BLUE', $response->getColour());
         $this->assertSame('FORD', $response->getMake());

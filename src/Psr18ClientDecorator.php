@@ -58,7 +58,7 @@ final class Psr18ClientDecorator implements HttpClient
 
     private function createPsrRequest(HttpMethod $method, UriInterface $uri, ?array $data, array $headers): RequestInterface
     {
-        $request = $this->requestFactory->createRequest($method->toString(), $uri);
+        $request = $this->requestFactory->createRequest($method->value, $uri);
 
         foreach (\array_merge(self::HEADERS, $headers) as $headerName => $headerValue) {
             $request = $request->withAddedHeader($headerName, $headerValue);

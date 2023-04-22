@@ -124,7 +124,7 @@ final class ClientTest extends TestCase
         $this->assertSame('M1', $response->getTypeApproval());
         $this->assertSame(2015, $response->getYearOfManufacture());
         $this->assertEquals(Date::fromString('2021-05-30'), $response->getTaxDueDate());
-        $this->assertSame(TaxStatus::fromString(TaxStatus::UNTAXED), $response->getTaxStatus());
+        $this->assertSame(TaxStatus::UNTAXED, $response->getTaxStatus());
         $this->assertEquals(Date::fromString('2021-05-13'), $response->getDateOfLastV5CIssued());
         $this->assertEquals(Date::fromString('2022-06-30'), $response->getMotExpiryDate());
         $this->assertSame('2 AXLE RIGID BODY', $response->getWheelplan());

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea2f8d3eb0de33d681973c8b86cbb7d6",
+    "content-hash": "4bf3fb8120f53e219a112179221ee55b",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1122,16 +1122,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.23.0",
+            "version": "v3.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "ddca9b342374087121e44cca3b7d8aca8f121fa7"
+                "reference": "448b7c1a3bf190c14fadc5c67e9d93373bfe0aee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/ddca9b342374087121e44cca3b7d8aca8f121fa7",
-                "reference": "ddca9b342374087121e44cca3b7d8aca8f121fa7",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/448b7c1a3bf190c14fadc5c67e9d93373bfe0aee",
+                "reference": "448b7c1a3bf190c14fadc5c67e9d93373bfe0aee",
                 "shasum": ""
             },
             "require": {
@@ -1168,9 +1168,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.23.0"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.25.1"
             },
-            "time": "2023-08-14T12:28:46+00:00"
+            "time": "2023-09-04T01:23:51+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
@@ -1231,16 +1231,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.32",
+            "version": "1.10.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44"
+                "reference": "03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
-                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1",
+                "reference": "03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1",
                 "shasum": ""
             },
             "require": {
@@ -1289,20 +1289,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-24T21:54:50+00:00"
+            "time": "2023-09-04T12:20:53+00:00"
         },
         {
             "name": "phpstan/phpstan-beberlei-assert",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-beberlei-assert.git",
-                "reference": "bbf7df77f65f2c8136eef38718910634c5c60351"
+                "reference": "0918f2c71f93d44839b74fe3ba2682b2083a8729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-beberlei-assert/zipball/bbf7df77f65f2c8136eef38718910634c5c60351",
-                "reference": "bbf7df77f65f2c8136eef38718910634c5c60351",
+                "url": "https://api.github.com/repos/phpstan/phpstan-beberlei-assert/zipball/0918f2c71f93d44839b74fe3ba2682b2083a8729",
+                "reference": "0918f2c71f93d44839b74fe3ba2682b2083a8729",
                 "shasum": ""
             },
             "require": {
@@ -1337,9 +1337,9 @@
             "description": "PHPStan beberlei/assert extension",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-beberlei-assert/issues",
-                "source": "https://github.com/phpstan/phpstan-beberlei-assert/tree/1.1.0"
+                "source": "https://github.com/phpstan/phpstan-beberlei-assert/tree/1.1.2"
             },
-            "time": "2023-02-18T13:10:37+00:00"
+            "time": "2023-09-04T12:13:01+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -3054,5 +3054,5 @@
     "platform-overrides": {
         "php": "8.1.16"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

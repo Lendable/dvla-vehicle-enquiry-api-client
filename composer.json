@@ -58,7 +58,7 @@
             "@composer audit"
         ],
         "static-analysis": [
-            "bin/phpstan analyse src/ tests/ --configuration=./tools/phpstan/phpstan.neon --ansi",
+            "bin/phpstan analyse src/ tests/ rector.php --configuration=./tools/phpstan/phpstan.neon --ansi",
             "@rector:check"
         ],
         "lint:source": [

@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.1.7-experimental
 FROM lendableuk/php-fpm-alpine:8.1.16-alpine3.17 as base
 
-COPY --from=composer/composer:2.7.1-bin /composer /usr/bin/composer
+COPY --from=composer/composer:2.7.2-bin /composer /usr/bin/composer
 
 RUN apk add --no-cache git openssh \
     && mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts

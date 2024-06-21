@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1dfab9d5f4ef91cab9faf7d4a412d3b",
+    "content-hash": "b90599127be5609f3ca1309c4412d76f",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1045,16 +1045,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.59.1",
+            "version": "v3.59.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "71cc45897e8031f137f46881d4afe4105a413ed1"
+                "reference": "c855876e64de3431bc9279f27af7be40d11d7613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/71cc45897e8031f137f46881d4afe4105a413ed1",
-                "reference": "71cc45897e8031f137f46881d4afe4105a413ed1",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/c855876e64de3431bc9279f27af7be40d11d7613",
+                "reference": "c855876e64de3431bc9279f27af7be40d11d7613",
                 "shasum": ""
             },
             "require": {
@@ -1091,9 +1091,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.59.1"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.59.3"
             },
-            "time": "2024-06-15T12:19:28+00:00"
+            "time": "2024-06-16T14:17:34+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
@@ -1158,16 +1158,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.11.4",
+            "version": "1.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "9100a76ce8015b9aa7125b9171ae3a76887b6c82"
+                "reference": "490f0ae1c92b082f154681d7849aee776a7c1443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9100a76ce8015b9aa7125b9171ae3a76887b6c82",
-                "reference": "9100a76ce8015b9aa7125b9171ae3a76887b6c82",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/490f0ae1c92b082f154681d7849aee776a7c1443",
+                "reference": "490f0ae1c92b082f154681d7849aee776a7c1443",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-06T12:19:22+00:00"
+            "time": "2024-06-17T15:10:54+00:00"
         },
         {
             "name": "phpstan/phpstan-beberlei-assert",
@@ -1735,16 +1735,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.21",
+            "version": "10.5.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ac837816fa52078f7a5e17ed774f256a72a51af6"
+                "reference": "5f124e3e3e561006047b532fd0431bf5bb6b9015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ac837816fa52078f7a5e17ed774f256a72a51af6",
-                "reference": "ac837816fa52078f7a5e17ed774f256a72a51af6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5f124e3e3e561006047b532fd0431bf5bb6b9015",
+                "reference": "5f124e3e3e561006047b532fd0431bf5bb6b9015",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1816,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.21"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.24"
             },
             "funding": [
                 {
@@ -1832,7 +1832,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-15T09:13:15+00:00"
+            "time": "2024-06-20T13:09:54+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -1880,16 +1880,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "556509e2dcf527369892b7d411379c4a02f31859"
+                "reference": "c930cdb21294f10955ddfc31b720971e8333943d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/556509e2dcf527369892b7d411379c4a02f31859",
-                "reference": "556509e2dcf527369892b7d411379c4a02f31859",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/c930cdb21294f10955ddfc31b720971e8333943d",
+                "reference": "c930cdb21294f10955ddfc31b720971e8333943d",
                 "shasum": ""
             },
             "require": {
@@ -1927,7 +1927,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/1.1.0"
+                "source": "https://github.com/rectorphp/rector/tree/1.1.1"
             },
             "funding": [
                 {
@@ -1935,7 +1935,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-18T09:40:27+00:00"
+            "time": "2024-06-21T07:51:17+00:00"
         },
         {
             "name": "sebastian/cli-parser",

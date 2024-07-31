@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f38ad807afe027e6adcff812f16bf71",
+    "content-hash": "442f598714b75166cbff42dce30d2814",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1045,16 +1045,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.60.0",
+            "version": "v3.61.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "11f328afa9768eed89bacffab02f56263185058c"
+                "reference": "e71ec78d1c47a16b082d155e404fff9ff1fa6052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/11f328afa9768eed89bacffab02f56263185058c",
-                "reference": "11f328afa9768eed89bacffab02f56263185058c",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/e71ec78d1c47a16b082d155e404fff9ff1fa6052",
+                "reference": "e71ec78d1c47a16b082d155e404fff9ff1fa6052",
                 "shasum": ""
             },
             "require": {
@@ -1091,9 +1091,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.60.0"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.61.0"
             },
-            "time": "2024-07-25T09:27:32+00:00"
+            "time": "2024-07-31T08:19:08+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
@@ -1735,16 +1735,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.28",
+            "version": "10.5.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ff7fb85cdf88131b83e721fb2a327b664dbed275"
+                "reference": "8e9e80872b4e8064401788ee8a32d40b4455318f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ff7fb85cdf88131b83e721fb2a327b664dbed275",
-                "reference": "ff7fb85cdf88131b83e721fb2a327b664dbed275",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e9e80872b4e8064401788ee8a32d40b4455318f",
+                "reference": "8e9e80872b4e8064401788ee8a32d40b4455318f",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1816,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.28"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.29"
             },
             "funding": [
                 {
@@ -1832,7 +1832,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-18T14:54:16+00:00"
+            "time": "2024-07-30T11:08:00+00:00"
         },
         {
             "name": "ralouphie/getallheaders",

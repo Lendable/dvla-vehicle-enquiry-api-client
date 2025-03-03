@@ -1045,16 +1045,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.69.0",
+            "version": "v3.70.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "ae4a74a1248db556a2bd682cf691b3f58337c84c"
+                "reference": "ff041542719ad3be54bd34647d0fd5bc7900115e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/ae4a74a1248db556a2bd682cf691b3f58337c84c",
-                "reference": "ae4a74a1248db556a2bd682cf691b3f58337c84c",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/ff041542719ad3be54bd34647d0fd5bc7900115e",
+                "reference": "ff041542719ad3be54bd34647d0fd5bc7900115e",
                 "shasum": ""
             },
             "require": {
@@ -1091,9 +1091,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.69.0"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.70.2"
             },
-            "time": "2025-02-15T20:38:59+00:00"
+            "time": "2025-03-03T21:07:46+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
@@ -1158,16 +1158,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.18",
+            "version": "1.12.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fef9f07814a573399229304bb0046affdf558812"
+                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fef9f07814a573399229304bb0046affdf558812",
-                "reference": "fef9f07814a573399229304bb0046affdf558812",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c42ba9bab7a940ed00092ecb1c77bad98896d789",
+                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-13T12:44:44+00:00"
+            "time": "2025-02-19T15:42:21+00:00"
         },
         {
             "name": "phpstan/phpstan-beberlei-assert",

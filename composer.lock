@@ -484,16 +484,16 @@
     "packages-dev": [
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.9.2",
+            "version": "7.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "d281ed313b989f213357e3be1a179f02196ac99b"
+                "reference": "7b2f29fe81dc4da0ca0ea7d42107a0845946ea77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d281ed313b989f213357e3be1a179f02196ac99b",
-                "reference": "d281ed313b989f213357e3be1a179f02196ac99b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7b2f29fe81dc4da0ca0ea7d42107a0845946ea77",
+                "reference": "7b2f29fe81dc4da0ca0ea7d42107a0845946ea77",
                 "shasum": ""
             },
             "require": {
@@ -590,7 +590,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.9.2"
+                "source": "https://github.com/guzzle/guzzle/tree/7.9.3"
             },
             "funding": [
                 {
@@ -606,7 +606,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-24T11:22:20+00:00"
+            "time": "2025-03-27T13:37:11+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1045,16 +1045,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.73.1",
+            "version": "v3.74.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "6bcfe9ff734019315cf9c6ea4f43cbcd87d1cc82"
+                "reference": "13ea689ccf22906ccea6615be2ed88535fe545a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/6bcfe9ff734019315cf9c6ea4f43cbcd87d1cc82",
-                "reference": "6bcfe9ff734019315cf9c6ea4f43cbcd87d1cc82",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/13ea689ccf22906ccea6615be2ed88535fe545a3",
+                "reference": "13ea689ccf22906ccea6615be2ed88535fe545a3",
                 "shasum": ""
             },
             "require": {
@@ -1091,9 +1091,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.73.1"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.74.0"
             },
-            "time": "2025-03-19T23:42:33+00:00"
+            "time": "2025-03-27T22:31:51+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
@@ -1158,16 +1158,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.21",
+            "version": "1.12.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "14276fdef70575106a3392a4ed553c06a984df28"
+                "reference": "29201e7a743a6ab36f91394eab51889a82631428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/14276fdef70575106a3392a4ed553c06a984df28",
-                "reference": "14276fdef70575106a3392a4ed553c06a984df28",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/29201e7a743a6ab36f91394eab51889a82631428",
+                "reference": "29201e7a743a6ab36f91394eab51889a82631428",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-09T09:24:50+00:00"
+            "time": "2025-03-23T14:57:32+00:00"
         },
         {
             "name": "phpstan/phpstan-beberlei-assert",
@@ -2872,12 +2872,12 @@
             },
             "type": "library",
             "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/contracts",
+                    "name": "symfony/contracts"
+                },
                 "branch-alias": {
                     "dev-main": "3.5-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {

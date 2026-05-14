@@ -38,12 +38,12 @@
         "guzzlehttp/guzzle": "^6.5.8|^7.4.5",
         "php-cs-fixer/shim": "^3.95.1",
         "php-parallel-lint/php-parallel-lint": "^1.4.0",
-        "phpstan/phpstan": "^2.1.50",
+        "phpstan/phpstan": "^2.1.54",
         "phpstan/phpstan-beberlei-assert": "^2.0.2",
         "phpstan/phpstan-deprecation-rules": "^2.0.4",
         "phpstan/phpstan-phpunit": "^2.0.16",
-        "phpstan/phpstan-strict-rules": "^2.0.10",
-        "phpunit/phpunit": "^10.5.29",
+        "phpstan/phpstan-strict-rules": "^2.0.11",
+        "phpunit/phpunit": "^10.5.63",
         "rector/rector": "^2.4.2"
     },
 
